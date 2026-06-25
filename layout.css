@@ -551,7 +551,7 @@ nav.nav-hidden {
   letter-spacing: .04em;
   color: var(--orange-dark);
 }
-.pub-phd-authors { font-size: .82rem; color: var(--orange-mid); margin-bottom: .2rem; }
+.pub-phd-authors { font-size: .82rem; color: var(--forest); margin-bottom: .2rem; }
 .pub-phd-links { display: flex; gap: .5rem; flex-wrap: wrap; }
 .pub-phd-link {
   display: inline-flex;
@@ -599,7 +599,7 @@ nav.nav-hidden {
   line-height: 1.5;
 }
 .pub-authors { font-size: .82rem; color: var(--ink-muted); margin-bottom: .2rem; }
-.pub-journal { font-size: .8rem; color: var(--ink-muted); margin-bottom: .75rem; }
+.pub-journal { font-size: .8rem; color: var(--orange-dark); margin-bottom: .75rem; }
 .pub-links { display: flex; gap: .5rem; flex-wrap: wrap; }
 .pub-link {
   display: inline-flex;
@@ -783,63 +783,128 @@ nav.nav-hidden {
 }
 .btn-app-code:hover { border-color: var(--forest); color: var(--forest); }
 
-/* ── SKILLS ───────────────────────────────────── */
-.skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-.skill-group-title {
-  font-family: var(--ff-body);
-  font-size: .68rem;
+/**/
+/* SKILLS */
+
+.skills-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-family: var(--ff-head);
+  font-size: 1.4rem;
   font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: 1.25rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid var(--border-lt);
+  margin-bottom: 1.5rem;
+  color: var(--ink);
 }
 
-.skill-list { display: flex; flex-direction: column; gap: .9rem; }
-.skill-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; }
-.skill-name { font-size: .9rem; font-weight: 400; color: var(--ink); }
-  .skill-img {width: 22px; }
+/* Expertise cards */
 
-
-.skill-level { font-size: .7rem; font-weight: 400; color: var(--ink-muted); }
-.skill-bar { height: 3px; background: var(--bg2); border-radius: 99px; overflow: hidden; }
-.skill-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--forest) 0%, var(--forest-mid) 100%);
-  border-radius: 99px;
-  transition: width 1.2s cubic-bezier(.4,0,.2,1);
-  width: 0;
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 1rem;
 }
 
-
-
-.lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.lang-list { display: flex; flex-direction: column; gap: .6rem; }
-.lang-item {
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  padding: .55rem .85rem;
-  border-radius: var(--r-sm);
+.expertise-card {
   background: var(--surface);
   border: 1px solid var(--border-lt);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: all .25s ease;
 }
-.lang-flag { font-size: 1.1rem; width: 22px; text-align: center; }
-.lang-name { font-size: .9rem; font-weight: 400; flex: 1; color: var(--ink); }
-.lang-proficiency {
-  font-size: .69rem;
-  font-weight: 500;
-  padding: .14rem .52rem;
-  border-radius: 99px;
-  background: var(--forest-lt);
-  color: var(--forest);
-  letter-spacing: .04em;
-  border: 1px solid rgba(45,90,61,.15);
-}
-.lang-proficiency.alt { background: var(--bg2); color: var(--ink-muted); border-color: var(--border-lt); }
 
+.expertise-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--forest-mid);
+  box-shadow: var(--shadow-md);
+}
+
+.expertise-icon {
+  font-size: 1.8rem;
+  margin-bottom: .8rem;
+}
+
+.expertise-card h4 {
+  font-family: var(--ff-head);
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  color: var(--ink);
+}
+
+.expertise-card p {
+  font-size: .85rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+/* Tools */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border-lt);
+  border-radius: var(--r);
+  padding: 1.2rem;
+  text-align: center;
+  transition: all .25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--forest-mid);
+  box-shadow: var(--shadow);
+}
+
+.tool-card img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  margin: 0 auto .75rem;
+}
+
+.tool-card span {
+  display: block;
+  font-size: .85rem;
+  color: var(--ink);
+}
+
+/* Languages */
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 1rem;
+}
+
+.language-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border-lt);
+  border-radius: var(--r);
+  padding: 1rem 1.2rem;
+}
+
+.language-flag {
+  font-size: 2rem;
+}
+
+.language-card h4 {
+  font-size: .95rem;
+  margin-bottom: .2rem;
+}
+
+.language-card p {
+  font-size: .8rem;
+  color: var(--ink-muted);
+}
 /* ── CV ───────────────────────────────────────── */
 
 
