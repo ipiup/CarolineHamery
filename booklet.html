@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Illustrated Booklet - Caroline Hamery</title>
+  <link rel="stylesheet" href="layout.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* CSS spécifique au carousel (peut aussi aller dans layout.css) */
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #333;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: scale(1.1);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: #6c63ff;
+    }
+
+    .slide-caption {
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation (inchangée) -->
+  <nav>
+    <button class="nav-logo" onclick="window.location.href='index.html'">Caroline <span>Hamery</span></button>
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><button onclick="window.location.href='index.html#page-home'" data-page="home">Home</button></li>
+        <li><button onclick="window.location.href='index.html#page-publications'" data-page="publications">Publications</button></li>
+        <li><button onclick="window.location.href='index.html#page-projects'" data-page="projects" class="active">Projects</button></li>
+        <li><button onclick="window.location.href='index.html#page-skills'" data-page="skills">Skills</button></li>
+        <li><button onclick="window.location.href='index.html#page-cv'" data-page="cv">CV</button></li>
+        <li><button onclick="window.location.href='index.html#page-contact'" data-page="contact">Contact</button></li>
+      </ul>
+    </div>
+    <a href="CV.pdf" class="nav-cta" download><i class="fa-solid fa-download"></i> CV</a>
+    <button class="burger" id="burger-btn" aria-label="Toggle menu" onclick="toggleDrawer()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer (inchangée) -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <button onclick="window.location.href='index.html#page-home'" data-page="home">Home</button>
+    <button onclick="window.location.href='index.html#page-publications'" data-page="publications">Publications</button>
+    <button onclick="window.location.href='index.html#page-projects'" data-page="projects" class="active">Projects</button>
+    <button onclick="window.location.href='index.html#page-skills'" data-page="skills">Skills</button>
+    <button onclick="window.location.href='index.html#page-cv'" data-page="cv">CV</button>
+    <button onclick="window.location.href='index.html#page-contact'" data-page="contact">Contact</button>
+    <a href="CV.pdf" class="drawer-cta" download><i class="fa-solid fa-download"></i> Download CV</a>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="page active">
+    <div class="page-content">
+      <div class="page-header">
+        <a href="index.html#page-projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        <span class="page-eyebrow">Project</span>
+        <h2 class="page-title">Handmade Illustrated Booklet</h2>
+      </div>
+
+      <!-- Image d'illustration en haut -->
+      <div class="project-hero">
+        <img src="img/booklet2.jpeg" alt="Handmade Illustrated Booklet" class="project-hero-image">
+        <div class="project-hero-caption">
+          <p><em>Some of the many booklet</em></p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="project-detail-content">
+        <p>This handmade illustrated booklet was created to accompany my PhD defense, specifically designed for non-expert audience members.</p>
+        <p>The booklet explains the main concepts in an accessible and visually engaging way.</p>
+
+        <!-- Carousel -->
+        <h3>English Version</h3>
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="carousel-slide">
+              <img src="img/Booklet1_EN.png" alt="Page 1: Introduction to Listening Effort">
+              <div class="slide-caption">Page 1: Introduction to Listening Effort</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/Booklet2_EN.png" alt="Page 2: Methodology & EEG">
+              <div class="slide-caption">Page 2: Methodology & EEG</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/Booklet3_EN.png" alt="Page 3: Key Results">
+              <div class="slide-caption">Page 3: Key Results</div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
+          </div>
+        </div>
+
+        <h3>French Version</h3>
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="carousel-slide">
+              <img src="img/Booklet1_EN.png" alt="Page 1: Introduction to Listening Effort">
+              <div class="slide-caption">Page 1: Introduction to Listening Effort</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/Booklet2_EN.png" alt="Page 2: Methodology & EEG">
+              <div class="slide-caption">Page 2: Methodology & EEG</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/Booklet3_EN.png" alt="Page 3: Key Results">
+              <div class="slide-caption">Page 3: Key Results</div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <img src="img/PetitPoisCarotte.png" alt="Logo" class="footer-logo">
+      <p>&copy; 2025 <span>Caroline Hamery</span></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript pour le carousel -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.querySelector('.carousel');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dots = document.querySelectorAll('.carousel-dot');
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      // Fonction pour mettre à jour le carousel
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Mettre à jour les dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      // Bouton suivant
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+      });
+
+      // Bouton précédent
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      });
+
+      // Navigation par dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          currentIndex = parseInt(dot.getAttribute('data-index'));
+          updateCarousel();
+        });
+      });
+
+      // Auto-play (optionnel)
+      let interval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+      }, 5000); // Change toutes les 5 secondes
+
+      // Arrêter l'auto-play au survol
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+      });
+
+      carouselContainer.addEventListener('mouseleave', () => {
+        interval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }, 5000);
+      });
+    });
+  </script>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
