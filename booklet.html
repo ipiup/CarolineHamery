@@ -133,7 +133,6 @@
   <div class="page active">
     <div class="page-content">
       <div class="page-header">
-        <a href="index.html#page-projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
         <span class="page-eyebrow">Project</span>
         <h2 class="page-title">Handmade Illustrated Booklet</h2>
       </div>
@@ -142,7 +141,7 @@
       <div class="project-hero">
         <img src="img/booklet2.jpeg" alt="Handmade Illustrated Booklet" class="project-hero-image">
         <div class="project-hero-caption">
-          <p><em>Some of the many booklet</em></p>
+          <p><em>Some of the many booklets</em></p>
         </div>
       </div>
 
@@ -150,64 +149,55 @@
       <div class="project-detail-content">
         <p>This handmade illustrated booklet was created to accompany my PhD defense, specifically designed for non-expert audience members.</p>
         <p>The booklet explains the main concepts in an accessible and visually engaging way.</p>
-
-        <!-- Carousel -->
-        <h3>English Version</h3>
-        <div class="carousel-container">
-          <div class="carousel">
-            <div class="carousel-slide">
-              <img src="img/Booklet1_EN.png" alt="Page 1: Introduction to Listening Effort">
-              <div class="slide-caption">Page 1: Introduction to Listening Effort</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="img/Booklet2_EN.png" alt="Page 2: Methodology & EEG">
-              <div class="slide-caption">Page 2: Methodology & EEG</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="img/Booklet3_EN.png" alt="Page 3: Key Results">
-              <div class="slide-caption">Page 3: Key Results</div>
-            </div>
+      <!-- Carousel 1 (English) -->
+      <h3>English Version</h3>
+      <div class="carousel-container" data-carousel="english">
+        <div class="carousel">
+          <div class="carousel-slide">
+            <img src="img/Booklet1_EN.png" alt="Introduction to Listening Effort">
           </div>
-          <div class="carousel-nav">
-            <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="carousel-slide">
+            <img src="img/Booklet2_EN.png" alt="Methodology & EEG">
           </div>
-          <div class="carousel-dots">
-            <span class="carousel-dot active" data-index="0"></span>
-            <span class="carousel-dot" data-index="1"></span>
-            <span class="carousel-dot" data-index="2"></span>
+          <div class="carousel-slide">
+            <img src="img/Booklet3_EN.png" alt="Key Results">
           </div>
         </div>
-
-        <h3>French Version</h3>
-        <div class="carousel-container">
-          <div class="carousel">
-            <div class="carousel-slide">
-              <img src="img/Booklet1_EN.png" alt="Page 1: Introduction to Listening Effort">
-              <div class="slide-caption">Page 1: Introduction to Listening Effort</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="img/Booklet2_EN.png" alt="Page 2: Methodology & EEG">
-              <div class="slide-caption">Page 2: Methodology & EEG</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="img/Booklet3_EN.png" alt="Page 3: Key Results">
-              <div class="slide-caption">Page 3: Key Results</div>
-            </div>
-          </div>
-          <div class="carousel-nav">
-            <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-          </div>
-          <div class="carousel-dots">
-            <span class="carousel-dot active" data-index="0"></span>
-            <span class="carousel-dot" data-index="1"></span>
-            <span class="carousel-dot" data-index="2"></span>
-          </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-dots">
+          <span class="carousel-dot active" data-index="0"></span>
+          <span class="carousel-dot" data-index="1"></span>
+          <span class="carousel-dot" data-index="2"></span>
         </div>
       </div>
-    </div>
 
+      <!-- Carousel 2 (French) -->
+      <h3>French Version</h3>
+      <div class="carousel-container" data-carousel="french">
+        <div class="carousel">
+          <div class="carousel-slide">
+            <img src="img/Booklet1_FR.png" alt="Introduction to Listening Effort">
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Booklet2_FR.png" alt="Methodology & EEG & Brain">
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Booklet3_FR.png" alt="Key Results">
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-dots">
+          <span class="carousel-dot active" data-index="0"></span>
+          <span class="carousel-dot" data-index="1"></span>
+          <span class="carousel-dot" data-index="2"></span>
+        </div>
+      </div>
     <footer>
       <img src="img/PetitPoisCarotte.png" alt="Logo" class="footer-logo">
       <p>&copy; 2025 <span>Caroline Hamery</span></p>
@@ -216,12 +206,17 @@
 
   <!-- JavaScript pour le carousel -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const carousel = document.querySelector('.carousel');
-      const slides = document.querySelectorAll('.carousel-slide');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const dots = document.querySelectorAll('.carousel-dot');
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionne tous les conteneurs de carousel
+    const carouselContainers = document.querySelectorAll('.carousel-container');
+
+    // Initialise chaque carousel individuellement
+    carouselContainers.forEach((container) => {
+      const carousel = container.querySelector('.carousel');
+      const slides = container.querySelectorAll('.carousel-slide');
+      const prevBtn = container.querySelector('.prev-btn');
+      const nextBtn = container.querySelector('.next-btn');
+      const dots = container.querySelectorAll('.carousel-dot');
 
       let currentIndex = 0;
       const totalSlides = slides.length;
@@ -263,19 +258,19 @@
       }, 5000); // Change toutes les 5 secondes
 
       // Arrêter l'auto-play au survol
-      const carouselContainer = document.querySelector('.carousel-container');
-      carouselContainer.addEventListener('mouseenter', () => {
+      container.addEventListener('mouseenter', () => {
         clearInterval(interval);
       });
 
-      carouselContainer.addEventListener('mouseleave', () => {
+      container.addEventListener('mouseleave', () => {
         interval = setInterval(() => {
           currentIndex = (currentIndex + 1) % totalSlides;
           updateCarousel();
         }, 5000);
       });
     });
-  </script>
+  });
+</script>
 
   <script type="text/javascript" src="script.js"></script>
 </body>
